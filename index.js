@@ -8,7 +8,7 @@ app.on('ready', () => {
   const contextMenu = Menu.buildFromTemplate([
     {label: 'clickButton', click() {console.log('clicked button')}},
     {label: 'changeIcon', click(){
-      changeIcon(tray)
+      changeIcon()
     }},
     {label: 'Item3', type: 'radio', checked: true},
     {label: 'Item4', type: 'radio'},
@@ -18,8 +18,6 @@ app.on('ready', () => {
   tray.setContextMenu(contextMenu)
 })
 
-function changeIcon(tray) {
-
-    tray.setImage('tray_icon_purple.png')
-
+function changeIcon() {
+  tray.setImage('tray_icon_purple.png')
 }
