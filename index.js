@@ -1,4 +1,5 @@
 const {app, Menu, Tray} = require('electron')
+const notify = require('electron-main-notification')
 
 // app.dock.hide()
 
@@ -16,6 +17,8 @@ app.on('ready', () => {
   ])
   tray.setToolTip('This is my application.')
   tray.setContextMenu(contextMenu)
+  setInterval(function() {
+    notify('Hello World')}, 5000)
 })
 
 function changeIcon() {
