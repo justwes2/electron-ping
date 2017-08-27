@@ -1,5 +1,6 @@
 const {app, Menu, Tray} = require('electron')
 const notify = require('electron-main-notification')
+const ping = require('ping')
 
 // app.dock.hide()
 
@@ -11,16 +12,28 @@ app.on('ready', () => {
     {label: 'changeIcon', click(){
       changeIcon()
     }},
-    {label: 'Item3', type: 'radio', checked: true},
+    {label: 'Ping Google', click() {
+      pingGoogle()
+    }},
     {label: 'Item4', type: 'radio'},
     {role: 'quit'}
   ])
   tray.setToolTip('This is my application.')
   tray.setContextMenu(contextMenu)
-  setInterval(function() {
-    notify('Hello World')}, 5000)
+  setInterval(pingGoogle, 5000)
 })
 
 function changeIcon() {
   tray.setImage('tray_icon_purple.png')
+}
+
+function pingGoogle() {
+  ping.promise.probe('google.com').then(function (res) {
+    console.log(res);
+    if (res.alive){
+      notify(res.time);
+    } else {
+      notify("Cannot connect to google")
+    }
+  })
 }
