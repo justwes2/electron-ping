@@ -20,6 +20,7 @@
   "homepage": "https://github.com/justwes2/electron-ping#readme",
   "devDependencies": {
     "electron": "^1.7.5",
+    "electron-builder": "^19.24.1",
     "electron-main-notification": "^1.0.1",
     "node-ping": "^0.1.0",
     "ping": "^0.2.2",
